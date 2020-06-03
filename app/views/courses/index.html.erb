@@ -1,39 +1,26 @@
-
+<div class= 'row'>
+<div class="col s12">
+<h3 class= 'align center'>Course Listing</h3>
+<p class= 'align center'>Tech university is about changing the world of technology. Some of our introductory course are listed below. Other courses can be accessed by clicking on the courses link</h3>
+</div>
+</div>
 <div class="row">
-    <div class="col s12  align center">
+<% @courses.each do |course| %>
+    <div class="col s4  align center">
       <div class="card">
         <div class="card-image">
          <%= image_tag("computer") %> 
-          <span class="card-title yellow accent-3">Course Listing</span>
+          <span class="card-title yellow accent-3"><%= course.symbol %></span>
         </div>
         <div class="card-content">
-          <p>This is a Tech school that teaches full-stack development, UI/UX design, Data Science and Graphic design. Some of our introductory courses are listed below</p>
+          <p><%= course.name %></p>
+          <p><%= course.description %></p>
         </div>
         <div class="card-action yellow accent-3">
-          <a href="#">Courses</a>
-          <a href="#">Enrollment</a>
+          <a href="#">Enroll</a>
+          <a href="#">Info</a>
         </div>
-            <div class="card-tabs">
-      <ul class="tabs tabs-fixed-width">
-        <li class="tab"><a href="#test4">CSS1</a></li>
-        <li class="tab"><a class="active" href="#test5">CSS2</a></li>
-        <li class="tab"><a href="#test6">CSS3</a></li>
-      </ul>
-    </div>
-    <div class="card-content grey lighten-4">
-      <div id="test4">
-<p>Title: Introduction to Computer Science</p>
-<p>Description:This course is about the history of Computer science</p>
-      </div>
-      <div id="test5">
-<p>Title: Types of Computer</p>
-<p>Description:This course is about the different types of Computers</p>
-      </div>
-      <div id="test6">
-<p>Title: Algorithm</p>
-<p>Description:This is an introductory course to algorithm</p>
       </div>
     </div>
-      </div>
-    </div>
+    <% end %>
   </div>

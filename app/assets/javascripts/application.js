@@ -20,6 +20,7 @@
 $( document ).on('turbolinks:load', function() {
     $(".dropdown-trigger").dropdown(); 
     $('.sidenav').sidenav();
-    $('ul.tabs').tabs();  
+    $('ul.tabs').tabs();
+    $('#fade-out-target').fadeOut(4000);   
 })
 

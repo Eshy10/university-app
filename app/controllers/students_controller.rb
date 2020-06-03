@@ -30,7 +30,7 @@ before_action :find_student, only: [:show, :edit, :update]
   def update
     @student = Student.find(params[:id])
     if @student.update(student_params)
-      flash[:notice] = 'Your Profile was succesfully created'
+      flash[:notice] = 'Your Profile was succesfully updated'
       redirect_to @student
     else
       render :edit
@@ -40,7 +40,7 @@ before_action :find_student, only: [:show, :edit, :update]
   private
 
   def student_params
-    params.require(:student).permit(:name, :email)
+    params.require(:student).permit(:name, :email, :password, :password_confirmation)
   end
 
   def find_student

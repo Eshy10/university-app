@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+skip_before_action :require_user, only: [:new, :create]
 before_action :find_student, only: [:show, :edit, :update]
 
   def index
@@ -10,7 +11,6 @@ before_action :find_student, only: [:show, :edit, :update]
   end
 
   def show
-    @student = Student.find(params[:id])
   end
 
   def create
@@ -24,11 +24,9 @@ before_action :find_student, only: [:show, :edit, :update]
   end
 
   def edit
-    @student = Student.find(params[:id])
   end
 
   def update
-    @student = Student.find(params[:id])
     if @student.update(student_params)
       flash[:notice] = 'Your Profile was succesfully updated'
       redirect_to @student
@@ -45,5 +43,12 @@ before_action :find_student, only: [:show, :edit, :update]
 
   def find_student
     @student = Student.find(params[:id])
+  end
+
+  def require_same_user
+    if current_user != @student
+      flash[:notice] = 'You can only edit your profile'
+      redirect_to student_path(current_user)
+    end
   end
 end
